@@ -88,6 +88,7 @@ module.exports = function(grunt) {
 			dest: options.dest || params.dest,
 			relativeFontPath: options.relativeFontPath,
 			fontPathVariables: options.fontPathVariables || false,
+			fontPathVariableName: options.fontPathVariableName || fontBaseName + '-font-path',
 			addHashes: options.hashes !== false,
 			addLigatures: options.ligatures === true,
 			template: options.template,
@@ -688,7 +689,7 @@ module.exports = function(grunt) {
 		 */
 		function generateFontSrc(type, font, stylesheet) {
 			var filename = template(o.fontFilename + font.ext, o);
-			var fontPathVariableName = o.fontFamilyName + '-font-path';
+			var fontPathVariableName = o.fontPathVariableName;
 
 			var url;
 			if (font.embeddable && has(o.embed, type)) {
